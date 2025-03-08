@@ -1,0 +1,22 @@
+{
+    "name": "note/ericksblog",
+    "description": "um projeto de blog talvez?",
+    "type": "project",
+    "require": {
+        "bcosca/fatfree-core": "^3.9"
+    },
+    "require-dev": {
+        "pestphp/pest": "^3.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Note\\Ericksblog\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ErickVerissimoo",
+            "email": "erickverissimodasilva144@gmail.com"
+        }
+    ]
+}
