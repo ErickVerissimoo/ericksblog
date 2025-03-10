@@ -1,14 +1,16 @@
 <?php
 
 namespace Note\Ericksblog\controllers;
-require __DIR__.'/../../vendor/autoload.php';
-
 
 class HomeController
 {
-    public function index(\Base $f3)
-    {
-     $f3->set('ugue', 'ugue vuxe disse');   
-       echo \Template::instance()->render('ola.html');
-    }
+    public function getPage(\Base $f3){
+        $email = $f3->get('SESSION.email');
+        
+        if(!$email){
+die('emaail não encontrado');
+        }
+        $f3->set('email', $email);
+        echo \Template::instance()->render('home.html');
+    } 
 }

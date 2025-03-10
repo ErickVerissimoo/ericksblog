@@ -3,13 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
 </head>
 <body>
-   <form id="cadastro" >
-    <input placeholder="email">
-    <button>Cadastrar</button>
-   </form>
-
+    <p> olá <?= ($email) ?></p>
 </body>
 </html>

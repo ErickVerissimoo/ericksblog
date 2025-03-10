@@ -1,6 +1,7 @@
 <?php
 namespace Note\Ericksblog;
 
+use DB\SQL;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 require __DIR__.'/../vendor/autoload.php';
@@ -23,3 +24,18 @@ function register_class_aliases($dir) {
         }
     }
 }
+$f3 = \Base::instance();
+$sql = new SQL(
+'mysql:host=localhost;port=3306;dbname=fat',
+    'root',
+    'erick'
+
+);
+if(!$sql ->exists("users")){
+$sql->exec('CREATE TABLE users(
+id int auto_increment primary key,
+email varchar(190),
+password varchar(100)
+);');
+}
+$f3->set('DB', $sql);
