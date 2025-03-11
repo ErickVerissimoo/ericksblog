@@ -3,9 +3,6 @@
 namespace Note\Ericksblog\controllers;
 
 use Note\Ericksblog\model\User;
-use DB\SQL\Session as sessao;
-
-require __DIR__.'/../../vendor/autoload.php';
 
 
 class AuthController
@@ -34,12 +31,12 @@ public function login(\Base $f3)
 $auth = new \Auth(new User, ['id'=> 'email', 'pw' => 'password'] );
 $bool = $auth->login($email, $password);
 if($bool){
-  $db = $f3->get('DB');
+
 $f3->set('SESSION.email', $email);
 $f3->reroute('/home');
 return;
 }
-throw new \Exception('Username or password invalids');
+$f3->error("404", "email not founded");
 
 }
     

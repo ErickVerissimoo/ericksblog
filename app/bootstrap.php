@@ -4,7 +4,6 @@ namespace Note\Ericksblog;
 use DB\SQL;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
-require __DIR__.'/../vendor/autoload.php';
 
 function register_class_aliases($dir) {
     $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir));
@@ -34,8 +33,19 @@ $sql = new SQL(
 if(!$sql ->exists("users")){
 $sql->exec('CREATE TABLE users(
 id int auto_increment primary key,
-email varchar(190),
+email varchar(190) NOT NULL,
 password varchar(100)
 );');
+
 }
+if(!$sql->exists('posts')){
+$sql->exec('
+    CREATE TABLE posts(
+    id int auto_increment primary key,
+    title varchar(100),
+    description text
+    );
+');
+}
+
 $f3->set('DB', $sql);
